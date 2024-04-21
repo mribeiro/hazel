@@ -1,0 +1,28 @@
+{
+  "logging": {
+    "level": "silly",
+    "filename": "hazel-%DATE%.log",
+    "datePattern": "YYYY-MM-DD",
+    "zippedArchive": false,
+    "maxSize": "20m",
+    "maxFiles": "7d",
+    "toConsole": true,
+    "toFile": false
+  },
+  "server": {
+    "port": 3000
+  },
+  "hazel": {
+    "ignoreSSLErrors": true,
+    "cronPattern": "0 * * * * *"
+  },
+  "rocketchat": {
+    "userId": "USER_ID",
+    "authToken": "AUTH_TOKEN",
+    "channel": "#CHANNEL",
+    "protocol": "https",
+    "domain": "DOMAIN",
+    "port": 443,
+    "alias": "ALIAS"
+  }
+}

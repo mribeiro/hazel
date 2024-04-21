@@ -1,0 +1,32 @@
+{
+  "name": "hazel",
+  "version": "2.1.0-beta",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "hazel": "bin/commander.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio Ribeiro, WIT Software",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cli-spinner": "^0.2.10",
+    "commander": "^4.1.1",
+    "config": "^3.2.5",
+    "cron": "^1.8.2",
+    "express": "^4.17.1",
+    "express-unless": "^0.5.0",
+    "jade-bootstrap": "^1.0.14",
+    "logform": "^2.1.2",
+    "moment": "^2.24.0",
+    "pug": "^2.0.4",
+    "request": "^2.88.0",
+    "rocketchat-api": "^1.0.4",
+    "table": "^5.4.6",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2"
+  }
+}

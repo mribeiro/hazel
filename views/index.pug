@@ -1,0 +1,10 @@
+extends ../node_modules/jade-bootstrap/layouts/starter
+block body
+    .container
+        span.label(class=`label-success`, data-toggle="tooltip",data-placement="bottom",title="test")= "UP"
+
+append scripts
+    script.
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });

@@ -1,0 +1,85 @@
+extends ../node_modules/jade-bootstrap/layouts/starter
+
+mixin printHeaders(headers)
+    each h in headers
+        = h.name + ": " + h.value
+        br
+
+block body
+
+    lottie-player(id="counter", src="https://assets3.lottiefiles.com/packages/lf20_O5wigT.json", background="transparent", speed="1", autoplay)
+
+    .container
+        p
+        if nrOfDown > 1
+            +alert-i-warning(`There are ${nrOfDown} endpoints down.`)
+        else if nrOfDown === 1
+            +alert-i-warning(`There is ${nrOfDown} endpoint down.`)
+        else
+            +alert-i-success(`Everything looks good!`)
+
+        if maintenanceMode
+            +alert-i-danger(`Maintenance mode ON. No check will be made until this is switched off.`)
+            small= `Last update ${moment(lastCheck).fromNow()}. No checks until maintenance mode is switched off.`
+        else
+            small= `Last update ${moment(lastCheck).fromNow()}. Will check again ${moment(nextCheck).fromNow()}.`
+
+
+        table(class='table')
+            thead
+                th Friendly name
+                th URL
+                th Headers
+                th Expected
+                th Actual
+                th Up?
+            each result in results
+                tr
+                    td= result.endpoint.friendlyName
+                    td(class='truncate')
+                        a(href=result.endpoint.endpoint)= result.endpoint.endpoint
+                    td
+                        if result.endpoint.headers
+                            +printHeaders(result.endpoint.headers)
+
+                    td= "HTTP " + result.endpoint.expectedStatus
+                    td= "HTTP " + result.httpStatus
+                    td
+                        if result.isUp
+                            span.label(class=`label-success`, data-toggle="tooltip", data-placement='bottom', title=result.responseTime + " ms") Up
+                            //+label-success("Up")
+                        else
+                            span.label(class=`label-danger`, data-toggle="tooltip", data-placement='bottom', data-html="true", title=result.responseTime + " ms<br/>Received " + result.httpStatus) Down
+                            //+label-danger("Down")
+
+append scripts
+    script(src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+    script.
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        document.getElementById("counter").addEventListener("complete", function () {
+            location.reload();
+        });
+
+        document.getElementById("counter").addEventListener("click", function (event) {
+            event.target.togglePlay();
+        });
+
+append styles
+    style.
+        .truncate {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 300px;
+        }
+
+        lottie-player {
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+        }

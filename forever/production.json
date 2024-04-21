@@ -1,0 +1,10 @@
+{
+    "uid": "hazel",
+    "append": true,
+    "watch": false,
+    "script": "web/index.js",
+    "sourceDir": "/home/ubuntu/hazel",
+    "logFile": "/home/ubuntu/hazel/logs/forever.log",
+    "outFile": "/home/ubuntu/hazel/logs/out.log",
+    "errFile": "/home/ubuntu/hazel/logs/error.log"
+}

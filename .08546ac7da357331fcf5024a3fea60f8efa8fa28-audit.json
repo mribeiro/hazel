@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": ".08546ac7da357331fcf5024a3fea60f8efa8fa28-audit.json",
+    "files": [
+        {
+            "date": 1599121699060,
+            "name": "hazel-2020-09-03.log",
+            "hash": "a714162e5849c1246daf789bdfe32041"
+        }
+    ]
+}
